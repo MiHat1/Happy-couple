@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Một câu hỏi nhỏ dành cho người thương."
+    />
+    <title>Một câu hỏi nhỏ ♡</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body class="question-state">
+    <main class="page">
+      <section class="card" aria-live="polite" aria-atomic="true">
+        <img class="kitty" src="img/kitty.jpg" alt="" />
+
+        <div id="question-view">
+          <p class="eyebrow">Gửi em một câu hỏi nhỏ</p>
+          <h1>Cho anh hun cái?</h1>
+          <p class="subtitle">Em chọn câu trả lời thật lòng nha ♡</p>
+
+          <div class="actions" id="actions">
+            <button class="button button-yes" id="yes-button" type="button">
+              Đồng ý <span aria-hidden="true">♡</span>
+            </button>
+            <button class="button button-no" id="no-button" type="button">
+              Từ chối <span aria-hidden="true">✿</span>
+            </button>
+          </div>
+          <p class="hint" id="hint">Nút từ chối đang hơi ngại đó…</p>
+        </div>
+
+        <div id="result-view" hidden>
+          <p class="eyebrow" id="result-eyebrow">Anh biết mà ♡</p>
+          <h1 id="result-message"></h1>
+          <button class="button button-again" id="again-button" type="button">
+            Chọn lại <span aria-hidden="true">↻</span>
+          </button>
+        </div>
+      </section>
+      <p class="footer-note">Được làm bằng một chút yêu thương ✨</p>
+    </main>
+  </body>
+</html>
