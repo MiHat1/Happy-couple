@@ -12,15 +12,14 @@ const hint = document.querySelector("#hint");
 
 const maxDodges = 3;
 const storyScenes = [
-  { image: "img/anh_trai.jpg", focus: "45%", message: "Anh như này" },
-  { image: "img/anh_trai_01.jpg", focus: "24%", message: "Như này" },
-  { image: "img/anh_trai_02.jpg", focus: "40%", message: "Như này" },
-  { image: "img/anh_gai.jpg", focus: "47%", message: "Còn em như này" },
-  { image: "img/anh_gai_1.jpg", focus: "41%", message: "Như này" },
-  { image: "img/anh_gai_02.jpg", focus: "44%", message: "Như này" },
+  { image: "img/anh_trai.jpg", message: "Anh như này" },
+  { image: "img/anh_trai_01.jpg", message: "Như này" },
+  { image: "img/anh_trai_02.jpg", message: "Như này" },
+  { image: "img/anh_gai.jpg", message: "Còn em như này" },
+  { image: "img/anh_gai_1.jpg", message: "Như này" },
+  { image: "img/anh_gai_02.jpg", message: "Như này" },
   {
     image: "img/anh_chung.jpg",
-    focus: "50%",
     message: "Chúng ta phải như này chứ, huhu",
   },
 ];
@@ -29,16 +28,15 @@ let dodgeCount = 0;
 let storyIndex = 0;
 let revealTimer;
 
-function setBackground(image, focus = "50%") {
+function setBackground(image) {
   document.body.style.setProperty("--scene-image", `url("${image}")`);
-  document.body.style.setProperty("--scene-focus", focus);
 }
 
 function showStoryScene() {
   const scene = storyScenes[storyIndex];
 
   document.body.className = "story-state";
-  setBackground(scene.image, scene.focus);
+  setBackground(scene.image);
   questionView.hidden = true;
   rejectView.hidden = true;
   successView.hidden = true;
@@ -143,7 +141,6 @@ againButton.addEventListener("click", () => {
   actions.append(noButton);
   document.body.className = "question-state";
   document.body.style.removeProperty("--scene-image");
-  document.body.style.removeProperty("--scene-focus");
   questionView.hidden = false;
   storyView.hidden = true;
   rejectView.hidden = true;
