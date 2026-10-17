@@ -21,7 +21,7 @@ body {
   color: var(--ink);
   background-color: #f8dce9;
   background-image:
-    linear-gradient(135deg, rgb(255 230 242 / 62%), rgb(255 245 224 / 48%)),
+    linear-gradient(135deg, rgb(255 230 242 / 20%), rgb(255 245 224 / 14%)),
     url("img/anh_nen.jpg");
   background-position: center;
   background-size: cover;
@@ -29,16 +29,13 @@ body {
   transition: background-image 350ms ease;
 }
 
-body.reject-state {
-  background-image:
-    linear-gradient(135deg, rgb(255 229 239 / 52%), rgb(255 242 224 / 42%)),
-    url("img/reject.jpg");
-}
-
+body.story-state,
+body.reject-state,
 body.success-state {
   background-image:
-    linear-gradient(135deg, rgb(255 229 239 / 48%), rgb(255 242 224 / 38%)),
-    url("img/success.jpg");
+    linear-gradient(135deg, rgb(20 10 18 / 24%), rgb(20 10 18 / 14%)),
+    var(--scene-image);
+  background-position: center, center var(--scene-focus, 50%);
 }
 
 button {
@@ -56,27 +53,20 @@ button {
 
 .card {
   position: relative;
-  width: min(100%, 540px);
+  width: min(100%, 600px);
   padding: 42px 36px 32px;
   overflow: hidden;
   text-align: center;
-  background: rgb(255 250 253 / 48%);
-  border: 1px solid rgb(255 255 255 / 65%);
+  background: rgb(255 250 253 / 32%);
+  border: 1px solid rgb(255 255 255 / 48%);
   border-radius: 30px;
-  box-shadow: 0 22px 65px rgb(113 46 79 / 24%);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  box-shadow: 0 22px 65px rgb(70 26 48 / 24%);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
 }
 
-.kitty {
-  display: block;
-  width: 92px;
-  height: 92px;
-  margin: 0 auto 18px;
-  object-fit: cover;
-  border: 4px solid #fff;
-  border-radius: 50%;
-  box-shadow: 0 5px 18px rgb(201 47 114 / 18%);
+.notice-view {
+  position: relative;
 }
 
 .eyebrow {
@@ -108,7 +98,28 @@ h1 {
   gap: 14px;
 }
 
+.sticker {
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sticker-corner {
+  position: absolute;
+  z-index: 1;
+  top: -12px;
+  right: -12px;
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+  transform: rotate(9deg);
+}
+
 .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   min-height: 48px;
   padding: 0 23px;
   border: 0;
@@ -122,7 +133,8 @@ h1 {
     transform 160ms ease;
 }
 
-.button:focus-visible {
+.button:focus-visible,
+.story-view:focus-visible {
   outline: 3px solid #6c3b8e;
   outline-offset: 4px;
 }
@@ -143,7 +155,7 @@ h1 {
 
 .button-no {
   color: #6d5262;
-  background: #f4e8ef;
+  background: rgb(244 232 239 / 72%);
   box-shadow: inset 0 0 0 1px #ead8e2;
 }
 
@@ -154,12 +166,96 @@ h1 {
 .hint {
   min-height: 1.25em;
   margin: 16px 0 0;
-  color: #987386;
+  color: #806274;
   font-size: 0.85rem;
 }
 
 .button-again {
   margin-top: 25px;
+}
+
+.choice-sticker {
+  width: 31px;
+  height: 31px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+.story-state .page {
+  display: block;
+  padding: 0;
+}
+
+.story-state .card {
+  display: grid;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  align-items: stretch;
+  padding: 0;
+  overflow: visible;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.story-view {
+  display: grid;
+  min-height: 100vh;
+  min-height: 100svh;
+  place-items: center;
+  padding: 24px;
+  cursor: pointer;
+}
+
+.story-copy {
+  position: relative;
+  width: min(100%, 660px);
+  padding: clamp(38px, 7vw, 58px) clamp(24px, 6vw, 46px)
+    clamp(24px, 6vw, 46px);
+  background: rgb(37 19 30 / 27%);
+  border: 1px solid rgb(255 255 255 / 34%);
+  border-radius: 28px;
+  box-shadow: 0 18px 55px rgb(0 0 0 / 20%);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
+.story-copy .eyebrow,
+.story-copy h1,
+.continue-hint {
+  color: #fff;
+  text-shadow: 0 2px 12px rgb(0 0 0 / 30%);
+}
+
+.continue-hint {
+  margin: 24px 0 0;
+  font-size: 0.95rem;
+}
+
+.success-photo {
+  display: block;
+  width: min(100%, 380px);
+  max-height: 38vh;
+  margin: 26px auto 0;
+  object-fit: cover;
+  object-position: center 42%;
+  border: 4px solid rgb(255 255 255 / 90%);
+  border-radius: 22px;
+  box-shadow: 0 12px 32px rgb(88 28 58 / 24%);
+  opacity: 0;
+  transform: translateY(14px) scale(0.97);
+  transition:
+    opacity 700ms ease,
+    transform 700ms ease;
+}
+
+.success-photo.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .footer-note {
@@ -170,11 +266,15 @@ h1 {
   text-shadow: 0 1px 5px rgb(91 38 66 / 50%);
 }
 
+.story-state .footer-note {
+  display: none;
+}
+
 [hidden] {
   display: none !important;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
   .page {
     gap: 14px;
     padding: 20px 14px;
@@ -185,20 +285,34 @@ h1 {
     border-radius: 24px;
   }
 
-  .kitty {
-    width: 78px;
-    height: 78px;
-    margin-bottom: 16px;
+  .actions {
+    flex-direction: column;
+    gap: 10px;
   }
 
-  .actions {
-    gap: 10px;
+  .actions .button {
+    width: min(100%, 360px);
   }
 
   .button {
     min-height: 46px;
     padding: 0 17px;
     font-size: 0.93rem;
+  }
+
+  .story-view {
+    padding: 16px;
+  }
+
+  .story-copy {
+    border-radius: 22px;
+  }
+
+  .sticker-corner {
+    top: -8px;
+    right: -8px;
+    width: 56px;
+    height: 56px;
   }
 }
 

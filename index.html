@@ -14,30 +14,91 @@
   <body class="question-state">
     <main class="page">
       <section class="card" aria-live="polite" aria-atomic="true">
-        <img class="kitty" src="img/kitty.jpg" alt="" />
-
-        <div id="question-view">
+        <div id="question-view" class="notice-view">
+          <img
+            class="sticker sticker-corner"
+            src="img/icon.jpg"
+            alt=""
+            aria-hidden="true"
+          />
           <p class="eyebrow">Gửi em một câu hỏi nhỏ</p>
-          <h1>Cho anh hun cái?</h1>
+          <h1>Em iu còn giận anh à :(</h1>
           <p class="subtitle">Em chọn câu trả lời thật lòng nha ♡</p>
 
           <div class="actions" id="actions">
             <button class="button button-yes" id="yes-button" type="button">
-              Đồng ý <span aria-hidden="true">♡</span>
+              <img
+                class="sticker choice-sticker"
+                src="img/icon.jpg"
+                alt=""
+                aria-hidden="true"
+              />
+              K, e yêu a <span aria-hidden="true">♡</span>
             </button>
             <button class="button button-no" id="no-button" type="button">
-              Từ chối <span aria-hidden="true">✿</span>
+              <img
+                class="sticker choice-sticker"
+                src="img/icon.jpg"
+                alt=""
+                aria-hidden="true"
+              />
+              Ừm, rất rất giận a iu <span aria-hidden="true">✿</span>
             </button>
           </div>
-          <p class="hint" id="hint">Nút từ chối đang hơi ngại đó…</p>
+          <p class="hint" id="hint">Nút giận đang hơi ngại đó…</p>
         </div>
 
-        <div id="result-view" hidden>
-          <p class="eyebrow" id="result-eyebrow">Anh biết mà ♡</p>
-          <h1 id="result-message"></h1>
+        <div
+          id="story-view"
+          class="story-view"
+          role="button"
+          tabindex="0"
+          aria-label="Bấm để tiếp tục"
+          hidden
+        >
+          <div class="story-copy">
+            <img
+              class="sticker sticker-corner"
+              src="img/icon.jpg"
+              alt=""
+              aria-hidden="true"
+            />
+            <p class="eyebrow">Một chút tâm sự</p>
+            <h1 id="story-message"></h1>
+            <p class="continue-hint">Bấm vào bất kỳ đâu để tiếp tục ♡</p>
+          </div>
+        </div>
+
+        <div id="reject-view" class="notice-view" hidden>
+          <img
+            class="sticker sticker-corner"
+            src="img/icon.jpg"
+            alt=""
+            aria-hidden="true"
+          />
+          <p class="eyebrow">Khoan đã em ơi…</p>
+          <h1>Em suy nghĩ lại đc hăm, chọn lại đi mò</h1>
           <button class="button button-again" id="again-button" type="button">
             Chọn lại <span aria-hidden="true">↻</span>
           </button>
+        </div>
+
+        <div id="success-view" class="notice-view" hidden>
+          <img
+            class="sticker sticker-corner"
+            src="img/icon.jpg"
+            alt=""
+            aria-hidden="true"
+          />
+          <p class="eyebrow">Anh biết mà ♡</p>
+          <h1>Anh cũng yêu e iu nhiều, hê hê</h1>
+          <img
+            class="success-photo"
+            id="success-photo"
+            src="img/anh_chung.jpg"
+            alt="Hai đứa mình bên nhau"
+            hidden
+          />
         </div>
       </section>
       <p class="footer-note">Được làm bằng một chút yêu thương ✨</p>
